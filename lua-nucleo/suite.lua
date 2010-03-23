@@ -407,7 +407,7 @@ local run_test = function(name, parameters_list)
     if not res then
       result, stage, msg = false, "run", run_err
     end
-    uninstall_strict_mode_()
+    if(uninstall_strict_mode_) then uninstall_strict_mode_() end
   end
 
   setmetatable(_G, gmt)
