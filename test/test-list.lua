@@ -23,6 +23,7 @@ return
   '0160-string';
   '0170-suite';
   '0171-suite-full';
+  '0172-suite-require';
   '0180-table';
   '0190-table-utils';
   '0200-tdeepequals-basic-types';
