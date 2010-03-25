@@ -4,6 +4,9 @@
 
 local make_suite = assert(loadfile('test/test-lib/init/no-strict.lua'))(...)
 
+-- This file tests the suite ability to work while failed on tests
+-- with strict file disabled.
+
 local ensure_error_with_substring
       = import 'lua-nucleo/ensure.lua'
       {
@@ -11,16 +14,16 @@ local ensure_error_with_substring
       }
 
 do
-local test = make_suite("test_require", { })
+local test = make_suite("test_failed", { })
 
-test "require" (function()
-  require('wrong_require')
+test "error" (function()
+  error('Expected error')
 end)
 
   ensure_error_with_substring(
       "require('wrong_require')",
-      "Suite `test_require' failed:\n"
-   .. " %* Test `require': (.-): module 'wrong_require' not found:\n(.-)",
+      "Suite `test_failed' failed:\n"
+   .. " %* Test `error': (.-): Expected error\n(.-)",
       test:run()
     )
   print("ABOVE FAIL WAS EXPECTED")
