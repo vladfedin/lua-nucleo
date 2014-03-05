@@ -3,6 +3,9 @@ language: lua
 compiler:
   - lua
 
+before_install:
+ - sudo apt-get install lua5.1
+
 script: ./test.sh
 
 # configure notifications (email, IRC, campfire etc)
